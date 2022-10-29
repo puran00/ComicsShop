@@ -2,9 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    //
+    public function register(Request $request){
+        $request->validate([
+            'name' => ['required', 'regex:/[А-Яа-яЁё]/u'],
+            'surname' => ['required', 'regex:/[А-Яа-яЁё]/u'],
+            'patronymic' => ['regex:/[А-Яа-яЁё]/u', 'nullable'],
+            'email' => ['required', 'email:frc', 'unique:users'],
+            'login' => ['required', 'regex:/[A-Za-zА-ЯЁа-яё0-9]/u'],
+            'password' => ['required', 'min:6', 'max:12', 'confirmed'],
+            'rules' => ['required'],
+        ], [
+            'name.required' => 'Обязательное поле для заполнения',
+            'name.regex' => 'Поле содержит только кирилицу',
+            'surname.required' => 'Обязательное поле для заполнения',
+            'surname.regex' => 'Поле содержит только кирилицу',
+            'patronymic.regex' => 'Поле содержит только кирилицу',
+            'email.required' => 'Обязательное поле для заполнения',
+            'email.email' => 'Тип поля email',
+            'email.unique' => 'Поле должно быть уникальным',
+            'login.required' => 'Обязательное поле для заполнения',
+            'login.regex' => 'Поле содержит только кирилицу',
+            'password.required' => 'Обязательное поле для заполнения',
+            'password.min' => 'Минимальное колиичество символов 6',
+            'password.max' => 'Максимальное колиичество символов 12',
+            'password.confirmed' => 'Пароль не совпадает',
+            'rules.required' => 'Обязательное поле для заполнения',
+        ]);
+        if ($request->rules == 1) {
+            $user = new User();
+            $user->name = $request->name;
+            $user->surname = $request->surname;
+            $user->patronymic = $request->patronymic;
+            $user->email = $request->email;
+            $user->login = $request->login;
+            $user->password = md5($request->password);
+            $user->save();
+
+            return redirect()->route('AuthPage')->with('success','Вы успешно зарегестрировались');
+        }else{
+            return redirect()->route('RegPage');
+        }
+
+    }
 }

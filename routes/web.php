@@ -15,4 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('AbouUs');
+
+//странички
+Route::get('/registration', [\App\Http\Controllers\PageController::class, 'RegPage'])->name('RegPage');
+Route::get('/auth', [\App\Http\Controllers\PageController::class, 'AuthPage'])->name('AuthPage');
+
+//функции
+Route::post('/registration/save', [\App\Http\Controllers\UserController::class, 'register'])->name('register');

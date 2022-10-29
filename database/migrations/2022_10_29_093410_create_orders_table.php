@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->float('summ')->default(0);
+            $table->string('status')->default('новый');
+            $table->text('comment');
             $table->timestamps();
         });
     }

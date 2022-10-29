@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "AnimeAce";
+    src: url('./public/fonts/animeace2_bld.otf');
+}
+
+body{
+    font-family:  'AnimeAce';
+}

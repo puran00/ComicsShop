@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->foreignIdFor(\App\Models\Category::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('img');
+            $table->date('age');
+            $table->string('antagonist');
+            $table->float('price');
+            $table->integer('count');
             $table->timestamps();
         });
     }
