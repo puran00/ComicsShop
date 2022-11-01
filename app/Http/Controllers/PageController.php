@@ -13,4 +13,8 @@ class PageController extends Controller
     public function AuthPage(){
         return view('user.auth');
     }
+
+    public function AdminPage(){
+        return view('admin.index');
+    }
 }

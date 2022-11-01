@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -33,7 +34,7 @@ class UserController extends Controller
             'password.confirmed' => 'Пароль не совпадает',
             'rules.required' => 'Обязательное поле для заполнения',
         ]);
-        if ($request->rules == 1) {
+        if ($request->rules = 1) {
             $user = new User();
             $user->name = $request->name;
             $user->surname = $request->surname;
@@ -49,4 +50,37 @@ class UserController extends Controller
         }
 
     }
+
+    public function authorization(Request $request){
+        $user=User::query()->where('login', $request->login)
+            ->where('password', md5($request->password))->first();
+        $request->validate([
+            'login'=>['required'],
+            'password'=>['required', 'min:6', 'max:12']
+        ],[
+            'login.required'=>'Обязательное поле для заполнения',
+            'password.required'=>'Обязательное поле для заполнения',
+            'password.min'=>'Минимальное кол-во символов 6',
+            'password.max'=>'Максимальное кол-во символов 12',
+        ]);
+
+        if ($user){
+            Auth::login($user);
+            if($user->role=='admin'){
+                return redirect()->route('AdminPage');
+            }
+            if($user->role==0){
+                return redirect()->route('AboutUs');
+            }
+        } else{
+            return redirect()->route('AuthPage')->with('error', 'Такого пользователя нет');
+        }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('AboutUs');
+    }
+
+
 }
