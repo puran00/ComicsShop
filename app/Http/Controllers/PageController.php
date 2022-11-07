@@ -17,4 +17,8 @@ class PageController extends Controller
     public function AdminPage(){
         return view('admin.index');
     }
+
+    public function NewCategory(){
+        return view('admin.newCategory');
+    }
 }

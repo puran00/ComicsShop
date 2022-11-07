@@ -22,7 +22,10 @@ Route::get('/registration', [\App\Http\Controllers\PageController::class, 'RegPa
 Route::get('/auth', [\App\Http\Controllers\PageController::class, 'AuthPage'])->name('AuthPage');
 Route::get('/admin',[\App\Http\Controllers\PageController::class, 'AdminPage'])->name('AdminPage');
 Route::get('/logout', [\App\Http\Controllers\UserController::class, 'logout'])->name('logout');
+Route::get('/category/add',[\App\Http\Controllers\PageController::class, 'NewCategory'])->name('NewCategory');
+
 
 //функции
 Route::post('/registration/save', [\App\Http\Controllers\UserController::class, 'register'])->name('register');
 Route::post('/auth', [\App\Http\Controllers\UserController::class, 'authorization'])->name('authorization');
+Route::post('category/add', [\App\Http\Controllers\CategoryController::class, 'create'])->name('create');

@@ -22,9 +22,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $category = new Category();
+        $category->title=$request->title;
+
+        $category->save();
+
+        return redirect()->route('AdminPage');
     }
 
     /**

@@ -28,7 +28,7 @@
         </div>
         <div class="row mt-3 justify-content-center">
             <div class="col-6" >
-                <form action="" method="post">
+                <form action="{{route('authorization')}}" method="post">
                     @csrf
                     @method('post')
                     <div class="mb-3">
