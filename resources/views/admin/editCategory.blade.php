@@ -9,7 +9,7 @@
                 <h2>Редактирование категории</h2>
             </div>
             <div class="col-6" >
-                <form action="" method="post">
+                <form action="{{route('CategoryEditSave',['category'=>$category])}}" method="post">
                     @csrf
                     @method('put')
                     <div class="mb-3">
@@ -17,7 +17,7 @@
                         <input required type="text" name="title" class="form-control" id="title" value="{{$category->title}}">
                     </div>
 
-                    <button type="submit" class="btn btn-primary col-12" style="background-color:#cfc0ff; color:#F4F1FF; border: none">Сохранить</button>
+                    <button type="submit" class="btn btn-primary col-12" style="background-color: #043F7E; color: #D2D2FF; border: none">Сохранить</button>
                 </form>
             </div>
         </div>

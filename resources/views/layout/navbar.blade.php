@@ -21,10 +21,13 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{route('NewCategory')}}">Добавить категрию</a></li>
-                        <li><a class="dropdown-item" href="#">Длбавить товар</a></li>
+                        <li><a class="dropdown-item" href="{{route('NewProduct')}}">Длбавить товар</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">Каталог</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{route('logout')}}">Выход</a>

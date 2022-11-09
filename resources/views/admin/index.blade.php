@@ -16,14 +16,14 @@
             </tr>
             </thead>
             <tbody>
-
+            @foreach($categories as $key=>$category)
                 <tr>
-                    <th scope="row"></th>
-                    <td></td>
+                    <th scope="row">{{$key+1}}</th>
+                    <td>{{$category->title}}</td>
                     <td>
                         <div class="row">
                             <div class="col-6">
-                                <a href="" class="btn btn-secondary col-12">Редактировать</a>
+                                <a href="{{route('editCategory', ['category'=>$category])}}" class="btn btn-secondary col-12">Редактировать</a>
                             </div>
                             <div class="col-6">
                                 <form action="" method="post">
@@ -37,9 +37,7 @@
                     </td>
 
                 </tr>
-
-
-
+            @endforeach
 
             </tbody>
         </table>

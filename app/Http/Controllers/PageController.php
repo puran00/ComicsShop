@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -15,10 +16,16 @@ class PageController extends Controller
     }
 
     public function AdminPage(){
-        return view('admin.index');
+        $categories = Category::all();
+        return view('admin.index', ['categories'=>$categories]);
     }
 
     public function NewCategory(){
         return view('admin.newCategory');
+    }
+
+    public function NewProduct(){
+        $categories = Category::all();
+        return view('admin.product', ['categories'=>$categories]);
     }
 }

@@ -7,79 +7,41 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function create(Request $request){
+//        $request->validate([
+//            'title' => ['required', 'regex:/[А-Яа-яЁё]/u'],
+//            'img' => ['required', 'mimes:png,jpg,jpeg','size:5'],
+//            'price' => ['required', 'numeric'],
+//            'count' => ['required', 'numeric', 'between:0,1000000'],
+//        ], [
+//            'title.required' => 'Обязательное поле для заполнения',
+//            'title.regex' => 'Поле содержит только кирилицу',
+//            'img.required' => 'Обязательное поле для заполнения',
+//            'img.mimes' => 'Допустимое разрешение: png,jpg,jpeg',
+//            'price.required' => 'Обязательное поле для заполнения',
+//            'price.numeric' => 'Поле должно быть числовым',
+//            'count.required' => 'Обязательное поле для заполнения',
+//            'count.numeric' => 'Поле должно быть числовым',
+//            'count.between' => 'Поле должно содержать числа от 0 до 1000000',
+//        ]);
+
+        $path_img='';
+        if($request->file('img')){
+            $path_img=$request->file('img')->store('/public/img');
+        }
+        $content = new Product();
+        $content->title=$request->title;
+        $content->category_id=$request->category_id;
+        $content->age=$request->age;
+        $content->antagonist=$request->antagonist;
+        $content->price=$request->price;
+        $content->count=$request->count;
+
+        $content->img='/storage/'.$path_img;
+
+        $content->save();
+
+        return redirect()->route('AdminPage');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        //
-    }
 }

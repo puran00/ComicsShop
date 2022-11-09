@@ -23,9 +23,13 @@ Route::get('/auth', [\App\Http\Controllers\PageController::class, 'AuthPage'])->
 Route::get('/admin',[\App\Http\Controllers\PageController::class, 'AdminPage'])->name('AdminPage');
 Route::get('/logout', [\App\Http\Controllers\UserController::class, 'logout'])->name('logout');
 Route::get('/category/add',[\App\Http\Controllers\PageController::class, 'NewCategory'])->name('NewCategory');
+Route::get('/category/edit/{category}', [\App\Http\Controllers\CategoryController::class, 'edit'])->name('editCategory');
+Route::get('/content', [\App\Http\Controllers\PageController::class, 'NewProduct'])->name('NewProduct');
 
 
 //функции
 Route::post('/registration/save', [\App\Http\Controllers\UserController::class, 'register'])->name('register');
 Route::post('/auth', [\App\Http\Controllers\UserController::class, 'authorization'])->name('authorization');
 Route::post('category/add', [\App\Http\Controllers\CategoryController::class, 'create'])->name('create');
+Route::put('/category/edit/save/{category}',[\App\Http\Controllers\CategoryController::class, 'update'])->name('CategoryEditSave');
+Route::post('/create_content',[\App\Http\Controllers\ProductController::class, 'create'])->name('createProduct');

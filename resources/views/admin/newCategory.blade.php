@@ -9,7 +9,7 @@
                 <h2>Создание категории</h2>
             </div>
             <div class="col-6" >
-                <form action="" method="post">
+                <form action="{{route('create')}}" method="post">
                     @csrf
                     @method('post')
                     <div class="mb-3">
