@@ -45,5 +45,9 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
+        <div>
+            <h1 class="text-center m-5">Новинки</h1>
+        </div>
     </div>
 @endsection

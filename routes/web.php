@@ -25,6 +25,12 @@ Route::get('/logout', [\App\Http\Controllers\UserController::class, 'logout'])->
 Route::get('/category/add',[\App\Http\Controllers\PageController::class, 'NewCategory'])->name('NewCategory');
 Route::get('/category/edit/{category}', [\App\Http\Controllers\CategoryController::class, 'edit'])->name('editCategory');
 Route::get('/content', [\App\Http\Controllers\PageController::class, 'NewProduct'])->name('NewProduct');
+Route::get('/catalog',[\App\Http\Controllers\PageController::class, 'CatalogPage'])->name('CatalogPage');
+
+
+Route::delete('/admin/delete/{category}',[\App\Http\Controllers\CategoryController::class,'destroy'])->name('delCategory');
+Route::get('/catalog/filter', [\App\Http\Controllers\ProductController::class, 'filter'])->name('filter');
+Route::get('/catalog/sort', [\App\Http\Controllers\ProductController::class, 'sort'])->name('sort');
 
 
 //функции

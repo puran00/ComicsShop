@@ -26,7 +26,7 @@
                                 <a href="{{route('editCategory', ['category'=>$category])}}" class="btn btn-secondary col-12">Редактировать</a>
                             </div>
                             <div class="col-6">
-                                <form action="" method="post">
+                                <form action="{{route('delCategory', ['category'=>$category])}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger col-12">Удалить</button>

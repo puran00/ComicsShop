@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -27,5 +28,11 @@ class PageController extends Controller
     public function NewProduct(){
         $categories = Category::all();
         return view('admin.product', ['categories'=>$categories]);
+    }
+
+    public function CatalogPage(){
+        $products = Product::query()->paginate(3);
+        $categories = Category::all();
+        return view('product.catalog', ['products'=>$products, 'categories'=>$categories]);
     }
 }
