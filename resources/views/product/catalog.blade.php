@@ -40,12 +40,15 @@
             <div class="products row row-cols-1 row-cols-md-3 g-5">
                 @foreach($products as $key=>$product)
                     <div class="col d-flex justify-content-center">
-                        <a href="#" class="card" >
-                            <img style="height: 80%;" src="{{$product->img}}" alt="product" >
-                            <p style="font-size: 18px; font-weight: bold; color: black; margin: 0" class=" text-center mt-2">{{\Illuminate\Support\Str::words($product->title, 4)}}</p>
+                        <a href="#" class="card" style="text-decoration: none">
+                            <img style="height: 80%" src="{{$product->img}}" alt="product" >
+                            <p style="font-size: 18px; font-weight: bold; color: black; margin: 0;  " class=" text-center mt-2">{{\Illuminate\Support\Str::words($product->title, 4)}}</p>
                             <p style="font-size: 18px; font-weight: bold; color: black; margin: 0" class="text-center">{{$product->price}}</p>
+                            <button type="button" class="btn btn-warning" style="transform: translate(65px, 11px); width: 63%">Подробнее</button>
                         </a>
+
                     </div>
+
                 @endforeach
             </div>
         </div>

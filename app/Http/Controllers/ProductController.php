@@ -56,7 +56,7 @@ class ProductController extends Controller
              $query=$query->where('category_id', $request->category);
          }
 
-         $products = $query->paginate(4)->withQueryString();
+         $products = $query->paginate(6)->withQueryString();
 
          return view('product.catalog', ['products'=>$products, 'categories'=>$categories]);
 
@@ -71,7 +71,7 @@ class ProductController extends Controller
         } else{
             $query = $query->orderBy('title');
         }
-        $products = $query->paginate(4)->withQueryString();
+        $products = $query->paginate(6)->withQueryString();
 
         return view('product.catalog', ['products'=>$products, 'categories'=>$categories]);
      }

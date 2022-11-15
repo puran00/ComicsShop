@@ -29,8 +29,8 @@
                                 Админ
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('NewCategory')}}">Добавить категрию</a></li>
-                                <li><a class="dropdown-item" href="{{route('NewProduct')}}">Длбавить товар</a></li>
+                                <li><a class="dropdown-item" href="{{route('NewCategory')}}">Добавить категорию</a></li>
+                                <li><a class="dropdown-item" href="{{route('NewProduct')}}">Добавить товар</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{{route('AdminPage')}}">Админ панель</a></li>
                             </ul>
