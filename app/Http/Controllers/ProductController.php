@@ -67,7 +67,7 @@ class ProductController extends Controller
         $query = Product::query();
 
         if($request->sorted){
-            $query = $query->orderBy($request->sorted);
+            $query = $query->orderByDesc($request->sorted);
         } else{
             $query = $query->orderBy('title');
         }
