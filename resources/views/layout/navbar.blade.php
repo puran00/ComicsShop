@@ -33,9 +33,16 @@
                                 <li><a class="dropdown-item" href="{{route('NewProduct')}}">Добавить товар</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{{route('AdminPage')}}">Админ панель</a></li>
+                                <li><a class="dropdown-item" href="">Все заказы</a></li>
                             </ul>
                         </li>
                     @endif
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="">Корзина</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="">Мои заказы</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{route('logout')}}">Выход</a>
                         </li>
